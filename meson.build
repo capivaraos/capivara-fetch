@@ -39,3 +39,8 @@ install_data('data/org.capivaraos.Fetch.metainfo.xml.in',
 install_data('data/icons/hicolor/256x256/apps/org.capivaraos.Fetch.png',
   install_dir: datadir / 'icons/hicolor/256x256/apps',
 )
+
+# Capybara head bundled for the shareable card and the CapivaraOS page.
+install_data('data/capybara-head.png',
+  install_dir: datadir / 'org.capivaraos.Fetch',
+)

@@ -12,7 +12,7 @@ from . import const
 WIDTH = 1000
 PADDING = 56
 ROW_H = 62
-HEADER_H = 150
+HEADER_H = 200
 FOOTER_H = 84
 
 
@@ -39,34 +39,35 @@ def render(rows):
     ctx.set_source(grad)
     ctx.fill()
 
-    # Header: capybara head + title.
+    # Header: capybara head + title, vertically centered in the header band.
     logo_drawn_w = 0
+    target = 108
     head = const.brand_head_png()
     if head:
         try:
             logo = cairo.ImageSurface.create_from_png(head)
-            target = 96
             scale = target / max(logo.get_width(), logo.get_height())
             ctx.save()
-            ctx.translate(PADDING, PADDING - 8)
+            ctx.translate(PADDING, PADDING - 4)
             ctx.scale(scale, scale)
             ctx.set_source_surface(logo, 0, 0)
             ctx.paint()
             ctx.restore()
-            logo_drawn_w = target + 24
+            logo_drawn_w = target + 28
         except Exception:
             logo_drawn_w = 0
 
+    text_x = PADDING + logo_drawn_w
     ctx.select_font_face("sans-serif", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
-    ctx.set_font_size(46)
+    ctx.set_font_size(48)
     ctx.set_source_rgb(*const.BRAND_CREAM)
-    ctx.move_to(PADDING + logo_drawn_w, PADDING + 44)
+    ctx.move_to(text_x, PADDING + 56)
     ctx.show_text(const.APP_NAME)
 
     ctx.select_font_face("sans-serif", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_NORMAL)
-    ctx.set_font_size(20)
+    ctx.set_font_size(21)
     ctx.set_source_rgb(*const.BRAND_BROWN)
-    ctx.move_to(PADDING + logo_drawn_w, PADDING + 74)
+    ctx.move_to(text_x, PADDING + 90)
     ctx.show_text("System snapshot")
 
     # Rows.

@@ -50,7 +50,9 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
             self._build_about_page(), "about", "CapivaraOS", "starred-symbolic"
         )
 
-        toolbar.set_content(self._stack)
+        self._toast_overlay = Adw.ToastOverlay()
+        self._toast_overlay.set_child(self._stack)
+        toolbar.set_content(self._toast_overlay)
         self.set_content(toolbar)
 
     # ---- System page -----------------------------------------------------
@@ -112,14 +114,11 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
             return  # cancelled
         if gfile and self._surface is not None:
             card.save_png(self._surface, gfile.get_path())
-            toast = Adw.Toast.new("Card saved")
-            # ToastOverlay isn't wired in this minimal skeleton; print for now.
-            print(f"[capivara-fetch] saved card to {gfile.get_path()}")
+            self._toast_overlay.add_toast(Adw.Toast.new("Card saved"))
 
     # ---- About / Try CapivaraOS page ------------------------------------
     def _build_about_page(self):
         status = Adw.StatusPage(
-            icon_name="starred-symbolic",
             title="Runs everywhere. Feels like home on CapivaraOS.",
             description=(
                 "Capivara Fetch is a small gift from the CapivaraOS project — "
@@ -127,6 +126,17 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
                 "Like it? Give the whole system a try."
             ),
         )
+        head = const.brand_head_png()
+        tex = None
+        if head:
+            try:
+                tex = Gdk.Texture.new_from_filename(head)
+            except GLib.Error:
+                tex = None
+        if tex is not None:
+            status.set_paintable(tex)
+        else:
+            status.set_icon_name("starred-symbolic")
         btns = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10,
                        halign=Gtk.Align.CENTER)
         try_btn = Gtk.Button(label="Try CapivaraOS")
