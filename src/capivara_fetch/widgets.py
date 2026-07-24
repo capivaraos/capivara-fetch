@@ -56,7 +56,7 @@ class Gauge(Gtk.DrawingArea):
         ctx.set_source_rgba(tr, tg, tb, ta)
         big = f"{self._value:.0f}{self._unit}"
         ctx.select_font_face("sans-serif", 0, 1)
-        ctx.set_font_size(38)
+        ctx.set_font_size(max(min(w, h) * 0.26, 12))
         ext = ctx.text_extents(big)
         ctx.move_to(cx - ext.width / 2 - ext.x_bearing, cy + 4)
         ctx.show_text(big)

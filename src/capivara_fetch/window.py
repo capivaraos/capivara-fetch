@@ -34,6 +34,7 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
         header.set_title_widget(self._switcher)
 
         menu = Gio.Menu()
+        menu.append("Pin to desktop", "app.pin")
         menu.append("About Capivara Fetch", "app.about")
         menu.append("Quit", "app.quit")
         menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=menu)
@@ -70,6 +71,9 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
             GLib.source_remove(self._timer_id)
             self._timer_id = 0
         return False
+
+    def notify_toast(self, text):
+        self._toast_overlay.add_toast(Adw.Toast.new(text))
 
     # ---- System page -----------------------------------------------------
     def _build_system_page(self):
