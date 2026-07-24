@@ -22,6 +22,25 @@
 
   <launchable type="desktop-id">org.capivaraos.Fetch.desktop</launchable>
 
+  <screenshots>
+    <screenshot type="default">
+      <caption>System information at a glance</caption>
+      <image>https://raw.githubusercontent.com/capivaraos/capivara-fetch/main/data/screenshots/system.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Live dashboard with real-time gauges and charts</caption>
+      <image>https://raw.githubusercontent.com/capivaraos/capivara-fetch/main/data/screenshots/live.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Export a shareable specs card</caption>
+      <image>https://raw.githubusercontent.com/capivaraos/capivara-fetch/main/data/screenshots/share.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>A gift from the CapivaraOS project</caption>
+      <image>https://raw.githubusercontent.com/capivaraos/capivara-fetch/main/data/screenshots/capivaraos.png</image>
+    </screenshot>
+  </screenshots>
+
   <categories>
     <category>Utility</category>
     <category>System</category>
