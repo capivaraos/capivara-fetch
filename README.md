@@ -4,8 +4,11 @@ A small, friendly **system-information viewer** for any Linux desktop — and a
 brand ambassador for [CapivaraOS](https://capivaraos.org).
 
 It shows your distro, kernel, desktop, CPU, GPU, memory and uptime in a clean
-GTK4 / libadwaita window, and exports a good-looking **card** you can share.
-Every shared card carries the CapivaraOS branding — that's the point. 🐹
+GTK4 / libadwaita window, exports a good-looking **card** you can share, and
+has a **Live** dashboard with real-time gauges and charts (CPU incl. per-core,
+memory, network and disk I/O, load average). It can also be **pinned to the
+desktop** as a compact widget where the compositor supports it (KDE, Xfce,
+wlroots). Every shared card carries the CapivaraOS branding — that's the point. 🐹
 
 > Built with GTK4 + libadwaita (Python). English-first; `pt_BR` translation
 > planned. Ships preinstalled on upcoming CapivaraOS releases.
@@ -43,19 +46,29 @@ flatpak run org.capivaraos.Fetch
 |------|------|
 | `src/capivara_fetch/sysinfo.py` | Collects system facts (best-effort, never crashes) |
 | `src/capivara_fetch/card.py` | Renders the shareable Cairo card |
-| `src/capivara_fetch/window.py` | libadwaita UI: System / Share / CapivaraOS pages |
+| `src/capivara_fetch/metrics.py` | Live `/proc` sampler (CPU, mem, net, disk, load) |
+| `src/capivara_fetch/widgets.py` | Cairo gauge / sparkline / per-core bar widgets |
+| `src/capivara_fetch/live.py` | The Live dashboard page (1s refresh) |
+| `src/capivara_fetch/widget_window.py` | Compact "pin to desktop" widget (layer-shell + fallback) |
+| `src/capivara_fetch/window.py` | libadwaita UI: System / Live / Share / CapivaraOS pages |
 | `src/capivara_fetch/main.py` | `Adw.Application` entry point |
-| `data/` | `.desktop`, AppStream metainfo, icon |
-| `build-aux/flatpak/` | Flathub manifest |
+| `data/` | `.desktop`, AppStream metainfo, icon, bundled capybara head |
+| `build-aux/flatpak/` | Flathub manifest (bundles gtk4-layer-shell) |
 
 ## Status / TODO
 
-- [x] System info page + shareable card (working prototype)
+- [x] System info page + shareable card
+- [x] Correct host distro detection inside the Flatpak sandbox
+- [x] Capybara branding on the card and the CapivaraOS page
+- [x] Toast overlay for "card saved" feedback
+- [x] Live dashboard (gauges, per-core bars, network/disk/load sparklines)
+- [x] "Pin to desktop" compact widget (layer-shell where supported, fallback elsewhere)
+- [x] GPU probe works inside the Flatpak sandbox (GNOME runtime ships `lspci`)
 - [ ] Add store screenshots to the AppStream metainfo (required by Flathub)
+- [ ] Replace placeholder PNG icon with the final scalable SVG
 - [ ] Wire gettext for `pt_BR` (strings already English-first)
-- [ ] Replace placeholder icon with the final scalable SVG
-- [ ] GPU probe that works fully inside the Flatpak sandbox
-- [ ] Toast overlay for "card saved" feedback
+- [ ] Verify the pinned-widget mode visually on a KDE/Xfce (Marsh/Pup) session
+- [ ] Submit to Flathub; then package as RPM to preinstall on CapivaraOS spins
 
 ## License
 
