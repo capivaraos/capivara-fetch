@@ -8,7 +8,10 @@ python_dir = python.get_install_dir()
 datadir = get_option('prefix') / get_option('datadir')
 
 # Python package.
-install_subdir('src/capivara_fetch', install_dir: python_dir)
+install_subdir('src/capivara_fetch',
+  install_dir: python_dir,
+  exclude_directories: ['__pycache__'],
+)
 
 # Executable launcher.
 conf = configuration_data()

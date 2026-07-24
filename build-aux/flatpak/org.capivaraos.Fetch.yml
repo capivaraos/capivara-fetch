@@ -10,7 +10,7 @@
 # For Flathub submission, replace the `dir` source with a tagged git source.
 id: org.capivaraos.Fetch
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '49'
 sdk: org.gnome.Sdk
 command: capivara-fetch
 
