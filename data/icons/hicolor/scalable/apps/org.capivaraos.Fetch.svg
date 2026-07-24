@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e2f52"/>
+      <stop offset="1" stop-color="#0f1a30"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="url(#bg)"/>
+  <!-- ears -->
+  <ellipse cx="43" cy="43" rx="12" ry="10" fill="#8a5a3b"/>
+  <ellipse cx="85" cy="43" rx="12" ry="10" fill="#8a5a3b"/>
+  <!-- head -->
+  <rect x="29" y="38" width="70" height="60" rx="27" fill="#c6895a"/>
+  <!-- muzzle -->
+  <rect x="43" y="66" width="42" height="30" rx="15" fill="#deb187"/>
+  <!-- eyes -->
+  <circle cx="51" cy="59" r="4.5" fill="#241811"/>
+  <circle cx="77" cy="59" r="4.5" fill="#241811"/>
+  <!-- nostrils -->
+  <circle cx="57" cy="81" r="3.2" fill="#5a3a24"/>
+  <circle cx="71" cy="81" r="3.2" fill="#5a3a24"/>
+</svg>

@@ -36,6 +36,9 @@ install_data('data/org.capivaraos.Fetch.metainfo.xml.in',
   rename: 'org.capivaraos.Fetch.metainfo.xml',
   install_dir: datadir / 'metainfo',
 )
+install_data('data/icons/hicolor/scalable/apps/org.capivaraos.Fetch.svg',
+  install_dir: datadir / 'icons/hicolor/scalable/apps',
+)
 install_data('data/icons/hicolor/256x256/apps/org.capivaraos.Fetch.png',
   install_dir: datadir / 'icons/hicolor/256x256/apps',
 )
