@@ -5,6 +5,7 @@ gi.require_version("Adw", "1")
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk  # noqa: E402
 
 from . import card, const, sysinfo  # noqa: E402
+from .live import LivePage  # noqa: E402
 
 
 def _surface_to_texture(surface):
@@ -21,10 +22,11 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.set_title(const.APP_NAME)
-        self.set_default_size(720, 640)
+        self.set_default_size(820, 720)
 
         self._rows = sysinfo.collect()
         self._surface = None
+        self._timer_id = 0
 
         toolbar = Adw.ToolbarView()
         header = Adw.HeaderBar()
@@ -40,9 +42,13 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
 
         self._stack = Adw.ViewStack()
         self._switcher.set_stack(self._stack)
+        self._live = LivePage()
         self._stack.add_titled_with_icon(
             self._build_system_page(), "system", "System", "computer-symbolic"
-        ).set_icon_name("computer-symbolic")
+        )
+        self._stack.add_titled_with_icon(
+            self._live, "live", "Live", "utilities-system-monitor-symbolic"
+        )
         self._stack.add_titled_with_icon(
             self._build_export_page(), "export", "Share", "emblem-shared-symbolic"
         )
@@ -54,6 +60,16 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
         self._toast_overlay.set_child(self._stack)
         toolbar.set_content(self._toast_overlay)
         self.set_content(toolbar)
+
+        # Drive the live dashboard once per second; stop when the window closes.
+        self._timer_id = GLib.timeout_add_seconds(1, self._live.tick)
+        self.connect("close-request", self._on_close)
+
+    def _on_close(self, *_):
+        if self._timer_id:
+            GLib.source_remove(self._timer_id)
+            self._timer_id = 0
+        return False
 
     # ---- System page -----------------------------------------------------
     def _build_system_page(self):

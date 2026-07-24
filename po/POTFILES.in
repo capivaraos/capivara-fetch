@@ -1,4 +1,5 @@
 src/capivara_fetch/window.py
+src/capivara_fetch/live.py
 src/capivara_fetch/main.py
 data/org.capivaraos.Fetch.desktop.in
 data/org.capivaraos.Fetch.metainfo.xml.in

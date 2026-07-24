@@ -22,6 +22,13 @@ BRAND_BROWN = (0.541, 0.353, 0.231)     # #8a5a3b — capybara brown accent
 BRAND_CREAM = (0.960, 0.925, 0.870)     # #f5ecde — warm off-white text
 BRAND_MUTED = (0.65, 0.70, 0.80)        # muted label grey-blue
 
+# Categorical chart palette — validated colorblind-safe (dataviz validator,
+# light surface): blue / orange / purple / teal. Used for the live dashboard.
+CHART_BLUE = (0.208, 0.518, 0.894)      # #3584e4
+CHART_ORANGE = (0.902, 0.380, 0.0)      # #e66100
+CHART_PURPLE = (0.569, 0.255, 0.675)    # #9141ac
+CHART_TEAL = (0.078, 0.612, 0.533)      # #149c88
+
 
 def _first_existing(*paths):
     for p in paths:
