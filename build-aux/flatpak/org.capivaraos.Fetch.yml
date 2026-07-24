@@ -1,0 +1,36 @@
+# Flatpak manifest for Flathub.
+#
+# Pure Python + PyGObject: GTK4, libadwaita and pycairo all ship inside the
+# GNOME runtime, so no extra pip modules are needed.
+#
+# For local testing:
+#   flatpak-builder --user --install --force-clean build-dir \
+#       build-aux/flatpak/org.capivaraos.Fetch.yml
+#
+# For Flathub submission, replace the `dir` source with a tagged git source.
+id: org.capivaraos.Fetch
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: capivara-fetch
+
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  # Let the user save the shared card into Downloads.
+  - --filesystem=xdg-download
+  # Read-only host access so hardware probes (lspci, /sys) work in the sandbox.
+  - --filesystem=host:ro
+
+modules:
+  - name: capivara-fetch
+    buildsystem: meson
+    sources:
+      # Local build. For Flathub swap for:
+      #   - type: git
+      #     url: https://github.com/capivaraos/capivara-fetch.git
+      #     tag: v0.1.0
+      - type: dir
+        path: ../..

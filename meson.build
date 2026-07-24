@@ -1,0 +1,38 @@
+project('capivara-fetch',
+  version: '0.1.0',
+  meson_version: '>= 0.62.0',
+)
+
+python = import('python').find_installation('python3')
+python_dir = python.get_install_dir()
+datadir = get_option('prefix') / get_option('datadir')
+
+# Python package.
+install_subdir('src/capivara_fetch', install_dir: python_dir)
+
+# Executable launcher.
+conf = configuration_data()
+conf.set('PYTHON_DIR', python_dir)
+configure_file(
+  input: 'capivara-fetch.in',
+  output: 'capivara-fetch',
+  configuration: conf,
+  install: true,
+  install_dir: get_option('bindir'),
+  install_mode: 'rwxr-xr-x',
+)
+
+# Desktop entry, AppStream metainfo, icon.
+# NOTE: the .in suffix is a placeholder for future gettext translation merge;
+# for now the files are installed verbatim.
+install_data('data/org.capivaraos.Fetch.desktop.in',
+  rename: 'org.capivaraos.Fetch.desktop',
+  install_dir: datadir / 'applications',
+)
+install_data('data/org.capivaraos.Fetch.metainfo.xml.in',
+  rename: 'org.capivaraos.Fetch.metainfo.xml',
+  install_dir: datadir / 'metainfo',
+)
+install_data('data/icons/hicolor/256x256/apps/org.capivaraos.Fetch.png',
+  install_dir: datadir / 'icons/hicolor/256x256/apps',
+)

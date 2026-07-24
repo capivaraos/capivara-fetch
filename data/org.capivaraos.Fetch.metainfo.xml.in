@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2026 CapivaraOS Project -->
+<component type="desktop-application">
+  <id>org.capivaraos.Fetch</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <name>Capivara Fetch</name>
+  <summary>See your system specs and share a friendly card</summary>
+
+  <description>
+    <p>
+      Capivara Fetch is a small, friendly system-information viewer. It shows
+      your distribution, kernel, desktop, CPU, GPU, memory and more in a clean
+      window — and lets you export a good-looking card to share your specs.
+    </p>
+    <p>
+      It runs on any Linux desktop and is a gift from the CapivaraOS project,
+      a friendly Linux distribution with a capybara at its heart.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">org.capivaraos.Fetch.desktop</launchable>
+
+  <categories>
+    <category>Utility</category>
+    <category>System</category>
+  </categories>
+
+  <keywords>
+    <keyword>system</keyword>
+    <keyword>specs</keyword>
+    <keyword>hardware</keyword>
+    <keyword>neofetch</keyword>
+    <keyword>capybara</keyword>
+  </keywords>
+
+  <url type="homepage">https://capivaraos.org</url>
+  <url type="bugtracker">https://github.com/capivaraos</url>
+
+  <developer id="org.capivaraos">
+    <name>CapivaraOS Project</name>
+  </developer>
+
+  <content_rating type="oars-1.1" />
+
+  <branding>
+    <color type="primary" scheme_preference="light">#c9a27a</color>
+    <color type="primary" scheme_preference="dark">#16233d</color>
+  </branding>
+
+  <releases>
+    <release version="0.1.0" date="2026-07-24">
+      <description>
+        <p>First public preview: system info view and shareable specs card.</p>
+      </description>
+    </release>
+  </releases>
+</component>

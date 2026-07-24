@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+/builddir/
+/build-dir/
+/.flatpak-builder/
+*.png.bak
