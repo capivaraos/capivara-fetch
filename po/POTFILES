@@ -1,3 +1,5 @@
+data/org.capivaraos.Fetch.desktop.in
+data/org.capivaraos.Fetch.metainfo.xml.in
 src/capivara_fetch/sysinfo.py
 src/capivara_fetch/card.py
 src/capivara_fetch/window.py

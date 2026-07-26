@@ -1,22 +1,108 @@
-# Portuguese translations for Capivara package
-# Traduções em português brasileiro para o pacote Capivara.
-# Copyright (C) 2026 THE Capivara'S COPYRIGHT HOLDER
+# Portuguese (Brazil) translations for the Capivara Fetch package.
+# Traduções em português brasileiro para o pacote Capivara Fetch.
+# Copyright (C) 2026 CapivaraOS Project
 # This file is distributed under the same license as the Capivara Fetch package.
-# Automatically generated, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Capivara Fetch\n"
 "Report-Msgid-Bugs-To: https://github.com/capivaraos\n"
-"POT-Creation-Date: 2026-07-26 14:14-0300\n"
-"PO-Revision-Date: 2026-07-26 14:14-0300\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2026-07-26 19:56-0300\n"
+"PO-Revision-Date: 2026-07-26 20:00-0300\n"
+"Last-Translator: CapivaraOS Project <capivaraos-bot@users.noreply.github.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: data/org.capivaraos.Fetch.desktop.in:2
+#: data/org.capivaraos.Fetch.metainfo.xml.in:8
+msgid "Capivara Fetch"
+msgstr "Capivara Fetch"
+
+#: data/org.capivaraos.Fetch.desktop.in:3
+msgid "System Information"
+msgstr "Informações do Sistema"
+
+#: data/org.capivaraos.Fetch.desktop.in:4
+msgid "View your system specs and share a card"
+msgstr "Veja as especificações do sistema e compartilhe um cartão"
+
+#: data/org.capivaraos.Fetch.desktop.in:10
+msgid "system;info;specs;hardware;neofetch;capybara;capivara;"
+msgstr ""
+"sistema;informações;especificações;hardware;neofetch;capivara;capybara;"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:9
+msgid "See your system specs and share a friendly card"
+msgstr "Veja as especificações do sistema e compartilhe um cartão simpático"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:12
+msgid ""
+"Capivara Fetch is a small, friendly system-information viewer. It shows your "
+"distribution, kernel, desktop, CPU, GPU, memory and more in a clean window — "
+"and lets you export a good-looking card to share your specs."
+msgstr ""
+"O Capivara Fetch é um visualizador de informações do sistema pequeno e "
+"simpático. Ele mostra sua distribuição, kernel, área de trabalho, CPU, GPU, "
+"memória e mais em uma janela limpa — e permite exportar um cartão bonito "
+"para compartilhar suas especificações."
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:17
+msgid ""
+"It runs on any Linux desktop and is a gift from the CapivaraOS project, a "
+"friendly Linux distribution with a capybara at its heart."
+msgstr ""
+"Ele roda em qualquer desktop Linux e é um presente do projeto CapivaraOS, "
+"uma distribuição Linux amigável com uma capivara no coração."
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:27
+msgid "System information at a glance"
+msgstr "Informações do sistema num relance"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:31
+msgid "Live dashboard with real-time gauges and charts"
+msgstr "Painel ao vivo com medidores e gráficos em tempo real"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:35
+msgid "Export a shareable specs card"
+msgstr "Exporte um cartão de especificações para compartilhar"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:39
+msgid "A gift from the CapivaraOS project"
+msgstr "Um presente do projeto CapivaraOS"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:50
+msgid "system"
+msgstr "sistema"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:51
+msgid "specs"
+msgstr "especificações"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:52
+msgid "hardware"
+msgstr "hardware"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:53
+msgid "neofetch"
+msgstr "neofetch"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:54
+msgid "capybara"
+msgstr "capivara"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:61
+msgid "CapivaraOS Project"
+msgstr "Projeto CapivaraOS"
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:74
+msgid "First public preview: system info view and shareable specs card."
+msgstr ""
+"Primeira prévia pública: visão de informações do sistema e cartão de "
+"especificações para compartilhar."
 
 #: src/capivara_fetch/sysinfo.py:143
 msgid "OS"
@@ -24,11 +110,11 @@ msgstr "SO"
 
 #: src/capivara_fetch/sysinfo.py:144
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: src/capivara_fetch/sysinfo.py:145
 msgid "Kernel"
-msgstr ""
+msgstr "Kernel"
 
 #: src/capivara_fetch/sysinfo.py:146
 msgid "Architecture"
@@ -40,11 +126,11 @@ msgstr "Área de trabalho"
 
 #: src/capivara_fetch/sysinfo.py:148
 msgid "Shell"
-msgstr ""
+msgstr "Shell"
 
 #: src/capivara_fetch/sysinfo.py:149
 msgid "CPU"
-msgstr ""
+msgstr "CPU"
 
 #: src/capivara_fetch/sysinfo.py:149
 #, python-brace-format
@@ -53,7 +139,7 @@ msgstr "{model} ({cores} núcleos)"
 
 #: src/capivara_fetch/sysinfo.py:150
 msgid "GPU"
-msgstr ""
+msgstr "GPU"
 
 #: src/capivara_fetch/sysinfo.py:151 src/capivara_fetch/live.py:67
 msgid "Memory"
@@ -120,7 +206,10 @@ msgid ""
 "Capivara Fetch is a small gift from the CapivaraOS project — a friendly "
 "Linux distribution with a capybara at its heart.\n"
 "Like it? Give the whole system a try."
-msgstr "O Capivara Fetch é um presentinho do projeto CapivaraOS — uma distribuição Linux amigável com uma capivara no coração.\nGostou? Experimente o sistema inteiro."
+msgstr ""
+"O Capivara Fetch é um presentinho do projeto CapivaraOS — uma distribuição "
+"Linux amigável com uma capivara no coração.\n"
+"Gostou? Experimente o sistema inteiro."
 
 #: src/capivara_fetch/window.py:163
 msgid "Try CapivaraOS"
@@ -134,6 +223,7 @@ msgstr "Visite capivaraos.org"
 msgid "Processor"
 msgstr "Processador"
 
+#. Row B — per-core bars.
 #: src/capivara_fetch/live.py:78
 msgid "Per-core usage"
 msgstr "Uso por núcleo"
@@ -146,6 +236,7 @@ msgstr "Rede"
 msgid "Disk I/O"
 msgstr "E/S de disco"
 
+#. Row D — load average.
 #: src/capivara_fetch/live.py:111
 msgid "Load average"
 msgstr "Carga média"
@@ -158,7 +249,7 @@ msgstr "{cores} núcleos · carga {load:.2f}"
 #: src/capivara_fetch/live.py:135
 #, python-brace-format
 msgid "swap {pct:.0f}%"
-msgstr ""
+msgstr "swap {pct:.0f}%"
 
 #: src/capivara_fetch/live.py:137
 #, python-brace-format
@@ -188,10 +279,12 @@ msgstr "Escrita {rate}"
 #: src/capivara_fetch/live.py:160
 #, python-brace-format
 msgid "1 min {a:.2f}   ·   5 min {b:.2f}   ·   15 min {c:.2f}"
-msgstr ""
+msgstr "1 min {a:.2f}   ·   5 min {b:.2f}   ·   15 min {c:.2f}"
 
 #: src/capivara_fetch/main.py:49
 msgid ""
 "Opened as a floating widget — this desktop can't pin it to the background. "
 "Use the titlebar menu to keep it on top."
 msgstr ""
+"Aberto como janela flutuante — este ambiente não consegue fixá-la ao fundo. "
+"Use o menu da barra de título para mantê-la sempre visível."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Capivara Fetch\n"
 "Report-Msgid-Bugs-To: https://github.com/capivaraos\n"
-"POT-Creation-Date: 2026-07-26 14:14-0300\n"
+"POT-Creation-Date: 2026-07-26 19:56-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,84 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: data/org.capivaraos.Fetch.desktop.in:2
+#: data/org.capivaraos.Fetch.metainfo.xml.in:8
+msgid "Capivara Fetch"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.desktop.in:3
+msgid "System Information"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.desktop.in:4
+msgid "View your system specs and share a card"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.desktop.in:10
+msgid "system;info;specs;hardware;neofetch;capybara;capivara;"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:9
+msgid "See your system specs and share a friendly card"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:12
+msgid ""
+"Capivara Fetch is a small, friendly system-information viewer. It shows your "
+"distribution, kernel, desktop, CPU, GPU, memory and more in a clean window — "
+"and lets you export a good-looking card to share your specs."
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:17
+msgid ""
+"It runs on any Linux desktop and is a gift from the CapivaraOS project, a "
+"friendly Linux distribution with a capybara at its heart."
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:27
+msgid "System information at a glance"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:31
+msgid "Live dashboard with real-time gauges and charts"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:35
+msgid "Export a shareable specs card"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:39
+msgid "A gift from the CapivaraOS project"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:50
+msgid "system"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:51
+msgid "specs"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:52
+msgid "hardware"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:53
+msgid "neofetch"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:54
+msgid "capybara"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:61
+msgid "CapivaraOS Project"
+msgstr ""
+
+#: data/org.capivaraos.Fetch.metainfo.xml.in:74
+msgid "First public preview: system info view and shareable specs card."
+msgstr ""
 
 #: src/capivara_fetch/sysinfo.py:143
 msgid "OS"
@@ -133,6 +211,7 @@ msgstr ""
 msgid "Processor"
 msgstr ""
 
+#. Row B — per-core bars.
 #: src/capivara_fetch/live.py:78
 msgid "Per-core usage"
 msgstr ""
@@ -145,6 +224,7 @@ msgstr ""
 msgid "Disk I/O"
 msgstr ""
 
+#. Row D — load average.
 #: src/capivara_fetch/live.py:111
 msgid "Load average"
 msgstr ""
