@@ -67,7 +67,7 @@ flatpak run org.capivaraos.Fetch
 - [x] Store screenshots in the AppStream metainfo
 - [x] Scalable SVG app icon (capybara-face badge)
 - [x] gettext with a `pt_BR` translation (English-first source)
-- [ ] Translate the `.desktop`/metainfo strings too (currently UI-only)
+- [x] Translate the `.desktop`/metainfo strings too (merged from po via ITS)
 - [ ] Verify the pinned-widget mode visually on a KDE/Xfce (Marsh/Pup) session
 - [ ] Submit to Flathub; then package as RPM to preinstall on CapivaraOS spins
 

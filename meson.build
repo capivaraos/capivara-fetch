@@ -26,15 +26,22 @@ configure_file(
   install_mode: 'rwxr-xr-x',
 )
 
-# Desktop entry, AppStream metainfo, icon.
-# NOTE: the .in suffix is a placeholder for future gettext translation merge;
-# for now the files are installed verbatim.
-install_data('data/org.capivaraos.Fetch.desktop.in',
-  rename: 'org.capivaraos.Fetch.desktop',
+# Desktop entry and AppStream metainfo: translatable keys/elements are merged
+# from the po/ catalogs (gettext ITS rules handle .desktop and .metainfo.xml).
+i18n.merge_file(
+  input: 'data/org.capivaraos.Fetch.desktop.in',
+  output: 'org.capivaraos.Fetch.desktop',
+  type: 'desktop',
+  po_dir: 'po',
+  install: true,
   install_dir: datadir / 'applications',
 )
-install_data('data/org.capivaraos.Fetch.metainfo.xml.in',
-  rename: 'org.capivaraos.Fetch.metainfo.xml',
+i18n.merge_file(
+  input: 'data/org.capivaraos.Fetch.metainfo.xml.in',
+  output: 'org.capivaraos.Fetch.metainfo.xml',
+  type: 'xml',
+  po_dir: 'po',
+  install: true,
   install_dir: datadir / 'metainfo',
 )
 install_data('data/icons/hicolor/scalable/apps/org.capivaraos.Fetch.svg',
