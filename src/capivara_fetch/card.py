@@ -8,6 +8,7 @@ card carries the CapivaraOS branding wherever it is shared.
 import cairo
 
 from . import const
+from .i18n import _
 
 WIDTH = 1000
 PADDING = 56
@@ -68,7 +69,7 @@ def render(rows):
     ctx.set_font_size(21)
     ctx.set_source_rgb(*const.BRAND_BROWN)
     ctx.move_to(text_x, PADDING + 90)
-    ctx.show_text("System snapshot")
+    ctx.show_text(_("System snapshot"))
 
     # Rows.
     y = HEADER_H

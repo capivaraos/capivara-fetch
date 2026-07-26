@@ -11,6 +11,7 @@ gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk  # noqa: E402
 
 from . import const, metrics  # noqa: E402
+from .i18n import _  # noqa: E402
 from .widgets import CoreBars, Gauge, Sparkline  # noqa: E402
 
 
@@ -57,13 +58,13 @@ class LivePage(Gtk.ScrolledWindow):
         # Row A — CPU + Memory gauges.
         row_a = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=14,
                         homogeneous=True)
-        cpu_card, cpu_in = _card("Processor")
+        cpu_card, cpu_in = _card(_("Processor"))
         self.cpu_gauge = Gauge(const.CHART_BLUE)
         self.cpu_caption = _muted()
         cpu_in.append(self.cpu_gauge)
         cpu_in.append(self.cpu_caption)
 
-        mem_card, mem_in = _card("Memory")
+        mem_card, mem_in = _card(_("Memory"))
         self.mem_gauge = Gauge(const.CHART_TEAL)
         self.mem_caption = _muted()
         mem_in.append(self.mem_gauge)
@@ -74,7 +75,7 @@ class LivePage(Gtk.ScrolledWindow):
         root.append(row_a)
 
         # Row B — per-core bars.
-        core_card, core_in = _card("Per-core usage")
+        core_card, core_in = _card(_("Per-core usage"))
         self.corebars = CoreBars(const.CHART_BLUE)
         core_in.append(self.corebars)
         root.append(core_card)
@@ -82,7 +83,7 @@ class LivePage(Gtk.ScrolledWindow):
         # Row C — Network + Disk sparklines.
         row_c = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=14,
                         homogeneous=True)
-        net_card, net_in = _card("Network")
+        net_card, net_in = _card(_("Network"))
         self.net_spark = Sparkline([
             (const.CHART_BLUE, s.net_rx_hist),
             (const.CHART_ORANGE, s.net_tx_hist),
@@ -92,7 +93,7 @@ class LivePage(Gtk.ScrolledWindow):
         net_in.append(self.net_spark)
         net_in.append(self.net_legend)
 
-        disk_card, disk_in = _card("Disk I/O")
+        disk_card, disk_in = _card(_("Disk I/O"))
         self.disk_spark = Sparkline([
             (const.CHART_BLUE, s.disk_rd_hist),
             (const.CHART_ORANGE, s.disk_wr_hist),
@@ -107,7 +108,7 @@ class LivePage(Gtk.ScrolledWindow):
         root.append(row_c)
 
         # Row D — load average.
-        load_card, load_in = _card("Load average")
+        load_card, load_in = _card(_("Load average"))
         self.load_spark = Sparkline([(const.CHART_PURPLE, s.load_hist)],
                                     min_top=float(s.ncpu))
         self.load_caption = _muted()
@@ -118,41 +119,45 @@ class LivePage(Gtk.ScrolledWindow):
     def tick(self):
         s = self.sampler.sample()
 
+        blue = f"<span foreground='{_hex(const.CHART_BLUE)}'>●</span> "
+        orange = f"<span foreground='{_hex(const.CHART_ORANGE)}'>●</span> "
+
         self.cpu_gauge.set_value(s["cpu"])
         self.cpu_caption.set_label(
-            f"{self.sampler.ncpu} cores · load {s['load'][0]:.2f}"
+            _("{cores} cores · load {load:.2f}").format(
+                cores=self.sampler.ncpu, load=s["load"][0])
         )
 
         mem = s["mem"]
         self.mem_gauge.set_value(mem["pct"])
         swap = ""
         if mem["swap_total_gib"] > 0.05:
-            swap = f"  ·  swap {mem['swap_pct']:.0f}%"
+            swap = "  ·  " + _("swap {pct:.0f}%").format(pct=mem["swap_pct"])
         self.mem_caption.set_label(
-            f"{mem['used_gib']:.1f} / {mem['total_gib']:.1f} GiB{swap}"
+            _("{used:.1f} / {total:.1f} GiB").format(
+                used=mem["used_gib"], total=mem["total_gib"]) + swap
         )
 
         self.corebars.set_values(self.sampler.percore)
 
         self.net_spark.queue_draw()
         self.net_legend.set_markup(
-            f"<span foreground='{_hex(const.CHART_BLUE)}'>●</span> "
-            f"Download {metrics.human_rate(s['net_rx'])}   "
-            f"<span foreground='{_hex(const.CHART_ORANGE)}'>●</span> "
-            f"Upload {metrics.human_rate(s['net_tx'])}"
+            blue + _("Download {rate}").format(rate=metrics.human_rate(s["net_rx"]))
+            + "   " + orange
+            + _("Upload {rate}").format(rate=metrics.human_rate(s["net_tx"]))
         )
 
         self.disk_spark.queue_draw()
         self.disk_legend.set_markup(
-            f"<span foreground='{_hex(const.CHART_BLUE)}'>●</span> "
-            f"Read {metrics.human_rate(s['disk_rd'])}   "
-            f"<span foreground='{_hex(const.CHART_ORANGE)}'>●</span> "
-            f"Write {metrics.human_rate(s['disk_wr'])}"
+            blue + _("Read {rate}").format(rate=metrics.human_rate(s["disk_rd"]))
+            + "   " + orange
+            + _("Write {rate}").format(rate=metrics.human_rate(s["disk_wr"]))
         )
 
         self.load_spark.queue_draw()
         load = s["load"]
         self.load_caption.set_label(
-            f"1 min {load[0]:.2f}   ·   5 min {load[1]:.2f}   ·   15 min {load[2]:.2f}"
+            _("1 min {a:.2f}   ·   5 min {b:.2f}   ·   15 min {c:.2f}").format(
+                a=load[0], b=load[1], c=load[2])
         )
         return True  # keep the GLib timer alive

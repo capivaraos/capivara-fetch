@@ -5,6 +5,7 @@ gi.require_version("Adw", "1")
 from gi.repository import Adw, Gdk, Gio, GLib, Gtk  # noqa: E402
 
 from . import card, const, sysinfo  # noqa: E402
+from .i18n import _  # noqa: E402
 from .live import LivePage  # noqa: E402
 
 
@@ -34,9 +35,9 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
         header.set_title_widget(self._switcher)
 
         menu = Gio.Menu()
-        menu.append("Pin to desktop", "app.pin")
-        menu.append("About Capivara Fetch", "app.about")
-        menu.append("Quit", "app.quit")
+        menu.append(_("Pin to desktop"), "app.pin")
+        menu.append(_("About Capivara Fetch"), "app.about")
+        menu.append(_("Quit"), "app.quit")
         menu_btn = Gtk.MenuButton(icon_name="open-menu-symbolic", menu_model=menu)
         header.pack_end(menu_btn)
         toolbar.add_top_bar(header)
@@ -45,13 +46,13 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
         self._switcher.set_stack(self._stack)
         self._live = LivePage()
         self._stack.add_titled_with_icon(
-            self._build_system_page(), "system", "System", "computer-symbolic"
+            self._build_system_page(), "system", _("System"), "computer-symbolic"
         )
         self._stack.add_titled_with_icon(
-            self._live, "live", "Live", "utilities-system-monitor-symbolic"
+            self._live, "live", _("Live"), "utilities-system-monitor-symbolic"
         )
         self._stack.add_titled_with_icon(
-            self._build_export_page(), "export", "Share", "emblem-shared-symbolic"
+            self._build_export_page(), "export", _("Share"), "emblem-shared-symbolic"
         )
         self._stack.add_titled_with_icon(
             self._build_about_page(), "about", "CapivaraOS", "starred-symbolic"
@@ -79,8 +80,8 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
     def _build_system_page(self):
         page = Adw.PreferencesPage()
         group = Adw.PreferencesGroup(
-            title="System information",
-            description="A snapshot of this machine",
+            title=_("System information"),
+            description=_("A snapshot of this machine"),
         )
         for label, value in self._rows:
             row = Adw.ActionRow(title=label, subtitle=str(value))
@@ -106,7 +107,7 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
         actions = Gtk.Box(
             orientation=Gtk.Orientation.HORIZONTAL, spacing=10, halign=Gtk.Align.CENTER
         )
-        save_btn = Gtk.Button(label="Save card…")
+        save_btn = Gtk.Button(label=_("Save card…"))
         save_btn.add_css_class("suggested-action")
         save_btn.add_css_class("pill")
         save_btn.connect("clicked", self._on_save)
@@ -122,7 +123,7 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
 
     def _on_save(self, _btn):
         dialog = Gtk.FileDialog(
-            title="Save specs card",
+            title=_("Save specs card"),
             initial_name="capivara-fetch.png",
         )
         dialog.save(self, None, self._on_save_done)
@@ -134,13 +135,13 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
             return  # cancelled
         if gfile and self._surface is not None:
             card.save_png(self._surface, gfile.get_path())
-            self._toast_overlay.add_toast(Adw.Toast.new("Card saved"))
+            self._toast_overlay.add_toast(Adw.Toast.new(_("Card saved")))
 
     # ---- About / Try CapivaraOS page ------------------------------------
     def _build_about_page(self):
         status = Adw.StatusPage(
-            title="Runs everywhere. Feels like home on CapivaraOS.",
-            description=(
+            title=_("Runs everywhere. Feels like home on CapivaraOS."),
+            description=_(
                 "Capivara Fetch is a small gift from the CapivaraOS project — "
                 "a friendly Linux distribution with a capybara at its heart.\n"
                 "Like it? Give the whole system a try."
@@ -159,11 +160,11 @@ class CapivaraFetchWindow(Adw.ApplicationWindow):
             status.set_icon_name("starred-symbolic")
         btns = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10,
                        halign=Gtk.Align.CENTER)
-        try_btn = Gtk.Button(label="Try CapivaraOS")
+        try_btn = Gtk.Button(label=_("Try CapivaraOS"))
         try_btn.add_css_class("suggested-action")
         try_btn.add_css_class("pill")
         try_btn.connect("clicked", lambda *_: self._open_uri(const.DOWNLOAD_URL))
-        site_btn = Gtk.Button(label="Visit capivaraos.org")
+        site_btn = Gtk.Button(label=_("Visit capivaraos.org"))
         site_btn.add_css_class("pill")
         site_btn.connect("clicked", lambda *_: self._open_uri(const.WEBSITE_URL))
         btns.append(try_btn)

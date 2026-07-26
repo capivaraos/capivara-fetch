@@ -13,6 +13,7 @@ gi.require_version("Gtk", "4.0")
 from gi.repository import GLib, Gtk  # noqa: E402
 
 from . import const, metrics  # noqa: E402
+from .i18n import _  # noqa: E402
 from .widgets import Gauge, Sparkline  # noqa: E402
 
 
@@ -136,9 +137,9 @@ class CompactWidget(Gtk.ApplicationWindow):
         self.net_spark.queue_draw()
         self.net_legend.set_markup(
             f"<span foreground='{_hex(const.CHART_BLUE)}'>●</span> "
-            f"{metrics.human_rate(s['net_rx'])}   "
-            f"<span foreground='{_hex(const.CHART_ORANGE)}'>●</span> "
-            f"{metrics.human_rate(s['net_tx'])}"
+            + _("Download {rate}").format(rate=metrics.human_rate(s["net_rx"]))
+            + f"   <span foreground='{_hex(const.CHART_ORANGE)}'>●</span> "
+            + _("Upload {rate}").format(rate=metrics.human_rate(s["net_tx"]))
         )
         return True
 

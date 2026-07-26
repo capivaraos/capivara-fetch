@@ -7,6 +7,7 @@ gi.require_version("Adw", "1")
 from gi.repository import Adw, Gio, Gtk  # noqa: E402
 
 from . import const  # noqa: E402
+from .i18n import _  # noqa: E402
 from .widget_window import CompactWidget  # noqa: E402
 from .window import CapivaraFetchWindow  # noqa: E402
 
@@ -45,8 +46,8 @@ class Application(Adw.Application):
         self._widget.present()
         if not self._widget.is_pinned_to_desktop() and self._main is not None:
             self._main.notify_toast(
-                "Opened as a floating widget — this desktop can't pin it to "
-                "the background. Use the titlebar menu to keep it on top."
+                _("Opened as a floating widget — this desktop can't pin it to "
+                  "the background. Use the titlebar menu to keep it on top.")
             )
 
     def _on_widget_closed(self, *_):

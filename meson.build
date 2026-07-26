@@ -4,6 +4,7 @@ project('capivara-fetch',
 )
 
 python = import('python').find_installation('python3')
+i18n = import('i18n')
 python_dir = python.get_install_dir()
 datadir = get_option('prefix') / get_option('datadir')
 
@@ -47,3 +48,6 @@ install_data('data/icons/hicolor/256x256/apps/org.capivaraos.Fetch.png',
 install_data('data/capybara-head.png',
   install_dir: datadir / 'org.capivaraos.Fetch',
 )
+
+# Translations (compiles po/<lang>.po -> share/locale/<lang>/.../<domain>.mo).
+subdir('po')

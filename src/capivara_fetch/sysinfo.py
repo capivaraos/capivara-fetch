@@ -9,6 +9,8 @@ import platform
 import re
 import subprocess
 
+from .i18n import _
+
 
 def _read(path):
     try:
@@ -138,14 +140,14 @@ def uptime():
 def collect():
     """Return an ordered list of (label, value) pairs for display/render."""
     return [
-        ("OS", distro_name()),
-        ("Host", hostname()),
-        ("Kernel", kernel()),
-        ("Architecture", architecture()),
-        ("Desktop", desktop_environment()),
-        ("Shell", shell()),
-        ("CPU", f"{cpu_model()} ({cpu_cores()} cores)"),
-        ("GPU", gpu_model()),
-        ("Memory", memory()),
-        ("Uptime", uptime()),
+        (_("OS"), distro_name()),
+        (_("Host"), hostname()),
+        (_("Kernel"), kernel()),
+        (_("Architecture"), architecture()),
+        (_("Desktop"), desktop_environment()),
+        (_("Shell"), shell()),
+        (_("CPU"), _("{model} ({cores} cores)").format(model=cpu_model(), cores=cpu_cores())),
+        (_("GPU"), gpu_model()),
+        (_("Memory"), memory()),
+        (_("Uptime"), uptime()),
     ]
