@@ -44,7 +44,10 @@ i18n.merge_file(
   install: true,
   install_dir: datadir / 'metainfo',
 )
-# App icon: the capybara logo, shipped as PNG at several hicolor sizes.
+# App icon: the flat capybara logo. Scalable SVG plus hicolor PNG fallbacks.
+install_data('data/icons/hicolor/scalable/apps/org.capivaraos.Fetch.svg',
+  install_dir: datadir / 'icons/hicolor/scalable/apps',
+)
 foreach size : ['64', '128', '256', '512']
   install_data(
     'data/icons/hicolor' / size + 'x' + size / 'apps/org.capivaraos.Fetch.png',
