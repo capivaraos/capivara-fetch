@@ -38,17 +38,16 @@ def _first_existing(*paths):
 
 
 def brand_head_png():
-    """Best-effort path to the capybara head PNG used on the card/icon.
+    """Best-effort path to the capybara logo PNG used on the card and the
+    CapivaraOS page — the same artwork as the app icon.
 
-    Falls back across: installed data dir, in-repo data/, and the sibling
-    brand-assets/ repo when running from the CapivaraOS workspace.
+    Falls back across the installed data dir and the in-repo data/ copies.
     """
     here = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.abspath(os.path.join(here, "..", ".."))
-    workspace = os.path.abspath(os.path.join(repo_root, ".."))
     return _first_existing(
         os.path.join(os.sep, "app", "share", APP_ID, "capybara-head.png"),
+        os.path.join(repo_root, "data", "capybara-head.png"),
+        os.path.join(repo_root, "data", "icons", "512x512", "apps", APP_ID + ".png"),
         os.path.join(repo_root, "data", "icons", "256x256", "apps", APP_ID + ".png"),
-        os.path.join(workspace, "brand-assets", "capivaraos-cabeca-marrom.png"),
-        os.path.join(workspace, "brand-assets", "capivaraos-cabeca.png"),
     )

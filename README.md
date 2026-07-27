@@ -65,7 +65,7 @@ flatpak run org.capivaraos.Fetch
 - [x] "Pin to desktop" compact widget (layer-shell where supported, fallback elsewhere)
 - [x] GPU probe works inside the Flatpak sandbox (GNOME runtime ships `lspci`)
 - [x] Store screenshots in the AppStream metainfo
-- [x] Scalable SVG app icon (capybara-face badge)
+- [x] Capybara app icon (single logo, shared with the in-app card/branding)
 - [x] gettext with a `pt_BR` translation (English-first source)
 - [x] Translate the `.desktop`/metainfo strings too (merged from po via ITS)
 - [ ] Verify the pinned-widget mode visually on a KDE/Xfce (Marsh/Pup) session
