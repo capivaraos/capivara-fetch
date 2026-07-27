@@ -44,12 +44,13 @@ i18n.merge_file(
   install: true,
   install_dir: datadir / 'metainfo',
 )
-install_data('data/icons/hicolor/scalable/apps/org.capivaraos.Fetch.svg',
-  install_dir: datadir / 'icons/hicolor/scalable/apps',
-)
-install_data('data/icons/hicolor/256x256/apps/org.capivaraos.Fetch.png',
-  install_dir: datadir / 'icons/hicolor/256x256/apps',
-)
+# App icon: the capybara logo, shipped as PNG at several hicolor sizes.
+foreach size : ['64', '128', '256', '512']
+  install_data(
+    'data/icons/hicolor' / size + 'x' + size / 'apps/org.capivaraos.Fetch.png',
+    install_dir: datadir / 'icons/hicolor' / size + 'x' + size / 'apps',
+  )
+endforeach
 
 # Capybara head bundled for the shareable card and the CapivaraOS page.
 install_data('data/capybara-head.png',
