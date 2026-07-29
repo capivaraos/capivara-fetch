@@ -11,7 +11,7 @@
 #       build-aux/flatpak/org.capivaraos.Fetch.yml
 id: org.capivaraos.Fetch
 runtime: org.gnome.Platform
-runtime-version: '49'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 command: capivara-fetch
 
@@ -42,5 +42,7 @@ modules:
   - name: capivara-fetch
     buildsystem: meson
     sources:
-      - type: dir
-        path: ../..
+      - type: git
+        url: https://github.com/capivaraos/capivara-fetch.git
+        tag: v0.1.0
+        commit: cece51c1798703f7036a3a7a07159c2661866548
