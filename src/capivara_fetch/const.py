@@ -13,7 +13,7 @@ VERSION = "0.1.0"
 # Where the "Try CapivaraOS" funnel points.
 WEBSITE_URL = "https://capivaraos.org"
 DOWNLOAD_URL = "https://sourceforge.net/projects/capivaraos/files/"
-ISSUE_URL = "https://github.com/capivaraos"
+ISSUE_URL = "https://github.com/capivaraos/capivara-fetch/issues"
 
 # CapivaraOS brand palette (used to render the shareable card).
 BRAND_NAVY = (0.086, 0.137, 0.239)      # #16233d — deep navy background

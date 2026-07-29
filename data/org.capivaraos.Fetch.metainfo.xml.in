@@ -55,7 +55,8 @@
   </keywords>
 
   <url type="homepage">https://capivaraos.org</url>
-  <url type="bugtracker">https://github.com/capivaraos</url>
+  <url type="bugtracker">https://github.com/capivaraos/capivara-fetch/issues</url>
+  <url type="vcs-browser">https://github.com/capivaraos/capivara-fetch</url>
 
   <developer id="org.capivaraos">
     <name>CapivaraOS Project</name>

@@ -4,11 +4,11 @@
 # plus gtk4-layer-shell, bundled so the optional "pin to desktop" widget can
 # anchor to the background where the compositor supports layer-shell.
 #
-# For local testing:
+# This is the exact manifest submitted to Flathub (reproducible git source).
+# For local testing against your working tree, temporarily swap the
+# capivara-fetch `git` source for:  {type: dir, path: ../..}
 #   flatpak-builder --user --install --force-clean build-dir \
 #       build-aux/flatpak/org.capivaraos.Fetch.yml
-#
-# For Flathub submission, replace the `dir` source with a tagged git source.
 id: org.capivaraos.Fetch
 runtime: org.gnome.Platform
 runtime-version: '49'
@@ -22,8 +22,9 @@ finish-args:
   - --device=dri
   # Let the user save the shared card into Downloads.
   - --filesystem=xdg-download
-  # Read-only host access so hardware probes (lspci, /sys) work in the sandbox.
-  - --filesystem=host:ro
+  # No host filesystem access needed: distro is read from /run/host/os-release
+  # (exposed by Flatpak), CPU/memory/uptime from /proc, and the GPU via lspci
+  # over /sys/bus/pci — all available in the default sandbox.
 
 modules:
   - name: gtk4-layer-shell
@@ -41,9 +42,5 @@ modules:
   - name: capivara-fetch
     buildsystem: meson
     sources:
-      # Local build. For Flathub swap for:
-      #   - type: git
-      #     url: https://github.com/capivaraos/capivara-fetch.git
-      #     tag: v0.1.0
       - type: dir
         path: ../..
