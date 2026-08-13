@@ -4,6 +4,3 @@ __pycache__/
 /build-dir/
 /.flatpak-builder/
 *.png.bak
-
-
-.claude/
