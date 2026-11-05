@@ -35,8 +35,8 @@ class RedactTest(unittest.TestCase):
         self.assertEqual(self.red("mariadb.service started"), "mariadb.service started")
 
     def test_short_user_name_only_as_a_whole_word(self):
-        out = dg.redact("dp logged in; dpkg and /home/dp/x; udp port", user="dp", home="/home/dp")
-        self.assertEqual(out, "USER logged in; dpkg and /home/USER/x; udp port")
+        out = dg.redact("jo logged in; jobs and /home/jo/x; major delay", user="jo", home="/home/jo")
+        self.assertEqual(out, "USER logged in; jobs and /home/USER/x; major delay")
 
     def test_network_and_identifiers(self):
         text = ("wlo1 192.168.127.243/22 fe80::9d1b:3c84:7849:3271/64 "
